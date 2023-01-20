@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { waitForElementToBeRemoved } from "@testing-library/react";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("waitForElementToBeRemoved does not time out", async () => {
+  const parent = document.createElement("div");
+  const child = document.createElement("div");
+  parent.appendChild(child)
+  await waitForElementToBeRemoved(child);
 });
